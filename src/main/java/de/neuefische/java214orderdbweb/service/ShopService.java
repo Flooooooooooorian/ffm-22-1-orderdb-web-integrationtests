@@ -59,6 +59,16 @@ public class ShopService {
         return productRepository.listProducts();
     }
 
+    public List<Product> searchProducts(String name){
+        List<Product> products = new ArrayList<>();
+        for (Product product : productRepository.listProducts()) {
+            if (product.getName().contains(name)) {
+                products.add(product);
+            }
+        }
+        return products;
+    }
+
     public Product getProductBy(String id){
         Optional<Product> optionalProduct = productRepository.getProduct(id);
         if (optionalProduct.isPresent()) {
