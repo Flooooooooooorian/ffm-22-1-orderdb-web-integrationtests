@@ -2,6 +2,7 @@ package de.neuefische.java214orderdbweb.controller;
 
 import de.neuefische.java214orderdbweb.model.Product;
 import de.neuefische.java214orderdbweb.service.ShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class ProductController {
 
     private final ShopService shopService;
 
+    @Autowired
     public ProductController(ShopService shopService) {
         this.shopService = shopService;
     }

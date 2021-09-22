@@ -29,7 +29,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order makeOder(@RequestBody List<String> productIds) {
+    public Order makeOrder(@RequestBody List<String> productIds) {
         return shopService.orderProducts(productIds);
     }
 
