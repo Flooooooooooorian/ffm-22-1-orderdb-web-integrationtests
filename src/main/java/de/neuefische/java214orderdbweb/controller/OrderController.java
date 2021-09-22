@@ -11,30 +11,30 @@ import java.util.List;
 @RequestMapping("order")
 public class OrderController {
 
-    private final ShopService orderService;
+    private final ShopService shopService;
 
     @Autowired
     public OrderController(ShopService orderService) {
-        this.orderService = orderService;
+        this.shopService = orderService;
     }
 
     @GetMapping
     public List<Order> getOrders() {
-        return orderService.listOrders();
+        return shopService.listOrders();
     }
 
     @GetMapping("{id}")
     public Order getOrderBy(@PathVariable String id) {
-        return orderService.getOrderBy(id);
+        return shopService.getOrderBy(id);
     }
 
     @PostMapping
     public Order makeOder(@RequestBody List<String> productIds) {
-        return orderService.orderProducts(productIds);
+        return shopService.orderProducts(productIds);
     }
 
     @DeleteMapping("{id}")
     public void deleteOrder(@PathVariable String id) {
-        orderService.deleteOrder(id);
+        shopService.deleteOrder(id);
     }
 }
