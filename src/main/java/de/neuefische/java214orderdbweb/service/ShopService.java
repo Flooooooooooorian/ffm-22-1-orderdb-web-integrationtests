@@ -3,6 +3,7 @@ package de.neuefische.java214orderdbweb.service;
 import de.neuefische.java214orderdbweb.model.Order;
 import de.neuefische.java214orderdbweb.model.Product;
 import de.neuefische.java214orderdbweb.repository.OrderRepository;
+import de.neuefische.java214orderdbweb.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +13,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class OrderService {
+public class ShopService {
 
     private final OrderRepository orderRepo;
-    private final ProductService productService;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepo, ProductService productService) {
-        this.productService = productService;
+    public ShopService(OrderRepository orderRepo, ProductRepository productRepository) {
         this.orderRepo = orderRepo;
+        this.productRepository = productRepository;
     }
 
     public List<Order> listOrders(){
@@ -39,7 +40,7 @@ public class OrderService {
     public Order orderProducts(List<String> productIds) {
         List<Product> productsToOrder = new ArrayList<>();
         for (String productId : productIds) {
-            Product productToAdd = productService.getProductBy(productId);
+            Product productToAdd = getProductBy(productId);
             productsToOrder.add(productToAdd);
         }
         return orderRepo.addOrder(new Order(generateId(), productsToOrder));
@@ -52,5 +53,18 @@ public class OrderService {
     public void deleteOrder(String id) {
         Order order = getOrderBy(id);
         orderRepo.deleteOrder(order);
+    }
+
+    public List<Product> getProducts(){
+        return productRepository.listProducts();
+    }
+
+    public Product getProductBy(String id){
+        Optional<Product> optionalProduct = productRepository.getProduct(id);
+        if (optionalProduct.isPresent()) {
+            return optionalProduct.get();
+        } else {
+            throw new IllegalArgumentException("Product with ID " + id + " not found");
+        }
     }
 }

@@ -3,7 +3,7 @@ package de.neuefische.java214orderdbweb.controller;
 import de.neuefische.java214orderdbweb.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import de.neuefische.java214orderdbweb.service.OrderService;
+import de.neuefische.java214orderdbweb.service.ShopService;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping("order")
 public class OrderController {
 
-    private final OrderService orderService;
+    private final ShopService orderService;
 
     @Autowired
-    public OrderController(OrderService orderService) {
+    public OrderController(ShopService orderService) {
         this.orderService = orderService;
     }
 
