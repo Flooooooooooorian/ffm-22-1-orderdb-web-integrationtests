@@ -14,6 +14,10 @@ public class ProductRepository {
 
     public ProductRepository() {
         this.products = new ArrayList<>();
+        this.products.add(new Product("123", "Apple"));
+        this.products.add(new Product("124", "Banana"));
+        this.products.add(new Product("125", "Car"));
+        this.products.add(new Product("126", "Bike"));
     }
 
     public List<Product> listProducts() {
