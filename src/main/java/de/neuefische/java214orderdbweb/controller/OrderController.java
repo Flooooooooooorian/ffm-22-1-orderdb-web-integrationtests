@@ -33,11 +33,6 @@ public class OrderController {
         return orderService.orderProducts(productIds);
     }
 
-    @PutMapping("{id}")
-    public Order changeOrder(@PathVariable String id, @RequestBody List<String> productIds) {
-        return orderService.changeOrder(id, productIds);
-    }
-
     @DeleteMapping("{id}")
     public void deleteOrder(@PathVariable String id) {
         orderService.deleteOrder(id);

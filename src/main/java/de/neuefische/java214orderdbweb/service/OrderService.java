@@ -49,20 +49,6 @@ public class OrderService {
         return UUID.randomUUID().toString();
     }
 
-    public Order changeOrder(String id, List<String> productIds) {
-        List<Product> productsToOrder = new ArrayList<>();
-        for (String productId : productIds) {
-            Product productToAdd = productService.getProductBy(productId);
-            productsToOrder.add(productToAdd);
-        }
-        Optional<Order> optionalOrder = orderRepo.getOrderBy(id);
-        if(optionalOrder.isPresent()) {
-            Order order = optionalOrder.get();
-            order.setProductList(productsToOrder);
-        }
-        return orderRepo.addOrder(new Order(id, productsToOrder));
-    }
-
     public void deleteOrder(String id) {
         Order order = getOrderBy(id);
         orderRepo.deleteOrder(order);
