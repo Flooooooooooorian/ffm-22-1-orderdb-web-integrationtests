@@ -18,12 +18,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getProducts() {
-        return shopService.getProducts();
-    }
-
-    @GetMapping
-    public List<Product> searchProducts(@RequestParam Optional<String> name) {
+    public List<Product> getProducts(@RequestParam Optional<String> name) {
         if (name.isPresent()) {
             return shopService.searchProducts(name.get());
         }
