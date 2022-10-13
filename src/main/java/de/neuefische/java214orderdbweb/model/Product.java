@@ -3,8 +3,11 @@ package de.neuefische.java214orderdbweb.model;
 import java.util.Objects;
 
 public class Product {
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
+
+    public Product() {
+    }
 
     public Product(String id, String name) {
         this.id = id;

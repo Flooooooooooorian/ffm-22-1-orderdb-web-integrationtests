@@ -17,11 +17,13 @@ public class ShopService {
 
     private final OrderRepository orderRepo;
     private final ProductRepository productRepository;
+    private final OrderApiService orderApiService;
 
     @Autowired
-    public ShopService(OrderRepository orderRepo, ProductRepository productRepository) {
+    public ShopService(OrderRepository orderRepo, ProductRepository productRepository, OrderApiService orderApiService) {
         this.orderRepo = orderRepo;
         this.productRepository = productRepository;
+        this.orderApiService = orderApiService;
     }
 
     public List<Order> listOrders(){
@@ -76,5 +78,10 @@ public class ShopService {
         } else {
             throw new IllegalArgumentException("Product with ID " + id + " not found");
         }
+    }
+
+    public Order getApiOder(String id) {
+        Order apiOrder = orderApiService.getOrderById(id);
+        return orderRepo.addOrder(apiOrder);
     }
 }

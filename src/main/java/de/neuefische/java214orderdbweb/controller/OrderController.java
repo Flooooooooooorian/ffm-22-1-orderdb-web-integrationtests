@@ -37,4 +37,9 @@ public class OrderController {
     public void deleteOrder(@PathVariable String id) {
         shopService.deleteOrder(id);
     }
+
+    @PostMapping("{id}")
+    public Order getApiOrderById(@PathVariable String id) {
+        return shopService.getApiOder(id);
+    }
 }

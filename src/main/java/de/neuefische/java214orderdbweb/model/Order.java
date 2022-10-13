@@ -5,24 +5,27 @@ import java.util.Objects;
 
 public class Order {
 
-private final String id;
-private List<Product> productList;
+    private String id;
+    private List<Product> products;
 
-    public Order(String id, List<Product> productList) {
+    public Order() {
+    }
+
+    public Order(String id, List<Product> products) {
         this.id = id;
-        this.productList = productList;
+        this.products = products;
     }
 
     public String getId() {
         return id;
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProductList(List<Product> products) {
-        this.productList = products;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
@@ -30,19 +33,19 @@ private List<Product> productList;
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(id, order.id) && Objects.equals(productList, order.productList);
+        return Objects.equals(id, order.id) && Objects.equals(products, order.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productList);
+        return Objects.hash(id, products);
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id='" + id + '\'' +
-                ", productList=" + productList +
+                ", productList=" + products +
                 '}';
     }
 }
