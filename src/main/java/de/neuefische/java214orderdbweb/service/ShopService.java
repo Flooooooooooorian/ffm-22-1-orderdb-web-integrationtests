@@ -29,9 +29,9 @@ public class ShopService {
     }
 
     public Order getOrderBy(String id) {
-        Optional<Order> optionalOrder = orderRepo.getOrderBy(id);
-        if (optionalOrder.isPresent()) {
-            return optionalOrder.get();
+        Order order = orderRepo.getOrderBy(id);
+        if (order != null) {
+            return order;
         } else {
             throw new IllegalArgumentException("Product with ID " + id + " not found");
         }
@@ -70,9 +70,9 @@ public class ShopService {
     }
 
     public Product getProductBy(String id){
-        Optional<Product> optionalProduct = productRepository.getProduct(id);
-        if (optionalProduct.isPresent()) {
-            return optionalProduct.get();
+        Product product = productRepository.getProduct(id);
+        if (product != null) {
+            return product;
         } else {
             throw new IllegalArgumentException("Product with ID " + id + " not found");
         }

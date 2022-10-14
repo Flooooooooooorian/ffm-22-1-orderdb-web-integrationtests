@@ -14,13 +14,13 @@ public class OrderRepository {
         return orders;
     }
 
-    public Optional<Order> getOrderBy(String id) {
+    public Order getOrderBy(String id) {
         for (Order order : orders) {
             if (order.getId().equals(id)) {
-                return Optional.of(order);
+                return order;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     public Order addOrder(Order newOrder){

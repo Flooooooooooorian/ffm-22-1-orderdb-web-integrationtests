@@ -24,12 +24,12 @@ public class ProductRepository {
         return products;
     }
 
-    public Optional<Product> getProduct(String id) {
+    public Product getProduct(String id) {
         for (Product product : products) {
             if (product.getId().equals(id)) {
-                return Optional.of(product);
+                return product;
             }
         }
-        return Optional.empty();
+        return null;
     }
 }
